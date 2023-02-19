@@ -1,5 +1,6 @@
 import { NextPageContext } from 'next'
 import { useSession, signIn, signOut, getSession } from 'next-auth/react'
+import Image from 'next/image'
 
 export default function Home() {
     const { data: session } = useSession()
@@ -12,8 +13,8 @@ export default function Home() {
                 <>
                     <button onClick={() => signOut()}>SignOut</button>
                     <p>Name: {session.user.name}</p>
-                    <img
-                        src={session?.user?.image}
+                    <Image
+                        src={session?.user?.image || ''}
                         alt='avatar'
                         className='w-[128px] h-32 rounded-full'
                     />
