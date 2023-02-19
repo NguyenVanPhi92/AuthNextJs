@@ -7,23 +7,23 @@ export default function Home() {
     console.log('User Authecation Login: ', session)
 
     return (
-        <>
+        <div className='text-center mt-16'>
             <h1 className='text-red-600'>Welcome To The Course</h1>
             {session?.user ? (
-                <div className='text-center mt-16'>
+                <>
                     <p>Name: {session.user.name}</p>
                     <p>Email: {session.user.email}</p>
                     <Image
-                        src={session?.user?.image || ''}
+                        src={session?.user?.image ? session?.user?.image : ''}
                         alt='avatar'
                         className='w-[128px] h-32 rounded-full'
                     />
                     <button onClick={() => signOut()}>SignOut</button>
-                </div>
+                </>
             ) : (
                 <button onClick={() => signIn()}>SignIn</button>
             )}
-        </>
+        </div>
     )
 }
 
