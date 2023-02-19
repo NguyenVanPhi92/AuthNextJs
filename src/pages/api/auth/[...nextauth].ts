@@ -39,5 +39,7 @@ export default NextAuth({
         //   server: process.env.MAIL_SERVER,
         //   from: 'NextAuth.js <no-reply@example.com>'
         // }),
-    ]
+    ],
+
+    secret: process.env.NEXTAUTH_URL
 })
