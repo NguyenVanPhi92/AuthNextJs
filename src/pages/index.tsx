@@ -14,7 +14,7 @@ export default function Home() {
                     <p>Name: {session.user.name}</p>
                     <p>Email: {session.user.email}</p>
                     <Image
-                        src={session?.user?.image ? session?.user?.image : ''}
+                        src={session?.user?.image as string}
                         alt='avatar'
                         className='w-[128px] h-32 rounded-full'
                     />
