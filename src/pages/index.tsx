@@ -10,15 +10,16 @@ export default function Home() {
         <>
             <h1 className='text-red-600'>Welcome To The Course</h1>
             {session?.user ? (
-                <>
-                    <button onClick={() => signOut()}>SignOut</button>
+                <div className='text-center mt-16'>
                     <p>Name: {session.user.name}</p>
+                    <p>Email: {session.user.email}</p>
                     <Image
                         src={session?.user?.image || ''}
                         alt='avatar'
                         className='w-[128px] h-32 rounded-full'
                     />
-                </>
+                    <button onClick={() => signOut()}>SignOut</button>
+                </div>
             ) : (
                 <button onClick={() => signIn()}>SignIn</button>
             )}
