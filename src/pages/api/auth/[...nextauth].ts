@@ -5,9 +5,12 @@ import GoogleProvider from 'next-auth/providers/google'
 import DiscordProvider from 'next-auth/providers/discord'
 import TwitterProvider from 'next-auth/providers/twitter'
 import Auth0Provider from 'next-auth/providers/auth0'
+import { MongoDBAdapter } from '@next-auth/mongodb-adapter'
+import clientPromise from '@/lib/mongodb'
 
 //Server side
 export default NextAuth({
+    adapter: MongoDBAdapter(clientPromise), // lưu data từ client khi login vào database
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID as string,
@@ -32,7 +35,7 @@ export default NextAuth({
         Auth0Provider({
             clientId: process.env.AUTH0_CLIENT_ID as string,
             clientSecret: process.env.AUTH0_CLIENT_SECRET as string,
-            issuer: process.env.AUTH0_ISSUER
+            issuer: process.env.AUTH0_ISSUER as string
         })
 
         // // OAuth authentication providers...
@@ -46,6 +49,5 @@ export default NextAuth({
         //   from: 'NextAuth.js <no-reply@example.com>'
         // }),
     ],
-
-    secret: process.env.NEXTAUTH_URL
+    secret: process.env.NEXTAUTH_SECRET
 })

@@ -27,7 +27,7 @@ async function connectDb() {
         const options = {
             bufferCommands: false,
             useNewUrlParse: true,
-            useUnitfiedTopology: true
+            useUnifiedTopology: true
         }
 
         cached.promise = mongoose
